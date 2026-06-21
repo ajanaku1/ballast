@@ -30,3 +30,6 @@ ballast-agent.log
 .claude/
 .DS_Store
 .vercel
+
+# local submission notes
+submission/
