@@ -2,7 +2,7 @@
 
 **Agent wallet (BSC):** `0x05e690aE1a0D9865f3d71E28c3e50d56A1ecbd94`
 **On-chain registration tx:** [`0xaf9107c9770bd4e7fb7c947d52d739a05c8b051288095b50f247ce79e6db9554`](https://bscscan.com/tx/0xaf9107c9770bd4e7fb7c947d52d739a05c8b051288095b50f247ce79e6db9554)
-**Repo:** _<add public repo URL>_
+**Repo:** https://github.com/ajanaku1/ballast
 **Demo video:** _<add link>_
 
 ## One-liner
