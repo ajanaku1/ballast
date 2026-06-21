@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ballast — Keel (Option B)</title>
+<style>
+  :root{
+    --bg:#f3f6f7; --ink:#0d2630; --sea:#0e6b7a; --sea2:#1394a6; --mist:#5b7682;
+    --card:#ffffff; --line:#e2ecee; --grn:#0f9e6e; --red:#d8584f; --gold:#c98a2b;
+    --sans:'Inter',-apple-system,Segoe UI,Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:
+     radial-gradient(1200px 500px at 80% -10%,#e6f1f2,transparent),var(--bg);
+     color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1060px;margin:0 auto;padding:30px 26px 48px}
+  header{display:flex;align-items:flex-end;gap:16px;margin-bottom:26px}
+  .logo{display:flex;align-items:center;gap:11px}
+  .mark{width:30px;height:30px;border-radius:50%;border:2.5px solid var(--sea);position:relative}
+  .mark:after{content:"";position:absolute;left:50%;top:3px;width:2.5px;height:13px;background:var(--sea);transform:translateX(-50%)}
+  .mark:before{content:"";position:absolute;left:50%;bottom:4px;width:13px;height:13px;border:2.5px solid var(--sea);border-top:0;border-radius:0 0 13px 13px;transform:translateX(-50%)}
+  h1{font-size:20px;letter-spacing:.02em;margin:0;font-weight:650}
+  .sub{color:var(--mist);font-size:13px;margin-top:2px}
+  .pill{margin-left:auto;display:flex;gap:8px}
+  .pill span{font-size:12px;color:var(--sea);background:#e7f3f4;border:1px solid #cfe7e9;padding:5px 11px;border-radius:20px}
+  .pill .live{color:#fff;background:var(--sea);border-color:var(--sea)}
+  .hero{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;margin-bottom:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:0 1px 0 rgba(13,38,48,.02),0 12px 30px -24px rgba(13,38,48,.3)}
+  .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)}
+  .big{font-size:34px;font-weight:680;margin-top:6px;letter-spacing:-.01em}
+  .delta{color:var(--grn);font-weight:600}
+  .statline{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
+  .statline div .n{font-size:11px;color:var(--mist);text-transform:uppercase;letter-spacing:.1em}
+  .statline div .x{font-size:17px;font-weight:600;margin-top:3px}
+  svg{display:block;width:100%;height:120px;margin-top:8px}
+  .water{display:flex;align-items:center;gap:16px}
+  .depth{flex:1}
+  .depthbar{height:10px;border-radius:6px;background:linear-gradient(90deg,#d8584f,#c98a2b,#0f9e6e);position:relative;margin-top:10px}
+  .depthbar i{position:absolute;top:-5px;width:3px;height:20px;background:var(--ink);border-radius:2px;left:30%}
+  .depthbar .dq{position:absolute;top:-3px;right:0;width:2px;height:16px;background:var(--red)}
+  .legend{display:flex;justify-content:space-between;font-size:11px;color:var(--mist);margin-top:7px}
+  .cols{display:grid;grid-template-columns:1.25fr 1fr;gap:18px}
+  .posrow{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .posrow:last-child{border-bottom:0}
+  .tk{width:58px;font-weight:600}
+  .wbar{flex:1;height:7px;background:#eef5f6;border-radius:5px;overflow:hidden}
+  .wbar i{display:block;height:100%;background:linear-gradient(90deg,var(--sea),var(--sea2))}
+  .wv{width:54px;text-align:right;color:var(--mist);font-size:13px}
+  .chg{width:54px;text-align:right;font-size:13px;font-weight:600}
+  .up{color:var(--grn)} .dn{color:var(--red)}
+  h3{font-size:13px;letter-spacing:.04em;margin:0 0 12px;color:var(--ink)}
+  .muted{color:var(--mist)}
+  .log .e{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px}
+  .log .e:last-child{border:0}
+  .log .tm{color:var(--mist);min-width:62px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--sea);margin-top:6px;flex:none}
+  .dot.g{background:var(--grn)} .dot.a{background:var(--gold)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo"><div class="mark"></div>
+      <div><h1>Ballast</h1><div class="sub">self-custody spot agent · keeping the ship upright</div></div></div>
+    <div class="pill"><span class="live">● Paper · Live</span><span>Conservative</span><span>Risk-On</span></div>
+  </header>
+
+  <div class="hero">
+    <div class="card">
+      <div class="eyebrow">Portfolio Equity</div>
+      <div class="big">$10,842 <span class="delta">+8.42%</span></div>
+      <svg viewBox="0 0 400 120" preserveAspectRatio="none">
+        <defs><linearGradient id="w" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1394a6" stop-opacity=".25"/><stop offset="1" stop-color="#1394a6" stop-opacity="0"/></linearGradient></defs>
+        <polyline fill="none" stroke="#0e6b7a" stroke-width="2.2" stroke-linejoin="round"
+          points="0,96 30,92 60,98 90,82 120,86 150,70 180,94 210,64 240,68 270,50 300,56 330,40 360,46 400,26"/>
+        <polygon fill="url(#w)" points="0,96 30,92 60,98 90,82 120,86 150,70 180,94 210,64 240,68 270,50 300,56 330,40 360,46 400,26 400,120 0,120"/>
+      </svg>
+      <div class="statline">
+        <div><div class="n">Max Drawdown</div><div class="x">8.9%</div></div>
+        <div><div class="n">Sharpe</div><div class="x">0.54</div></div>
+        <div><div class="n">Gross</div><div class="x">76%</div></div>
+        <div><div class="n">Trades · wk</div><div class="x">11</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">Ballast Depth · drawdown vs the 30% line</div>
+      <div class="big" style="font-size:26px">1.2% <span class="muted" style="font-size:14px;font-weight:500">open · 8.9% peak</span></div>
+      <div class="water"><div class="depth">
+        <div class="depthbar"><i></i><span class="dq"></span></div>
+        <div class="legend"><span>upright</span><span>self-kill 15%</span><span>DQ 30%</span></div>
+      </div></div>
+      <div style="margin-top:18px" class="eyebrow">Fear &amp; Greed → Exposure</div>
+      <div style="display:flex;align-items:center;gap:14px;margin-top:8px">
+        <div style="font-size:30px;font-weight:680;color:var(--sea)">28</div>
+        <div class="muted" style="font-size:13px">Fear opens the sails — gross held at <b style="color:var(--ink)">76%</b>. Greed would reef toward 40%.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="card">
+      <h3>Positions <span class="muted" style="font-weight:400">· 8 of 149 · 24% cash ballast</span></h3>
+      <div class="posrow"><span class="tk">BNB</span><div class="wbar"><i style="width:100%"></i></div><span class="wv">20.0%</span><span class="chg up">+2.1%</span></div>
+      <div class="posrow"><span class="tk">INJ</span><div class="wbar"><i style="width:77%"></i></div><span class="wv">15.4%</span><span class="chg up">+4.6%</span></div>
+      <div class="posrow"><span class="tk">CAKE</span><div class="wbar"><i style="width:64%"></i></div><span class="wv">12.8%</span><span class="chg dn">-0.8%</span></div>
+      <div class="posrow"><span class="tk">LINK</span><div class="wbar"><i style="width:55%"></i></div><span class="wv">11.1%</span><span class="chg up">+1.4%</span></div>
+      <div class="posrow"><span class="tk">AAVE</span><div class="wbar"><i style="width:48%"></i></div><span class="wv">9.7%</span><span class="chg up">+3.2%</span></div>
+      <div class="posrow"><span class="tk">XVS</span><div class="wbar"><i style="width:15%"></i></div><span class="wv">3.1%</span><span class="chg dn">-1.1%</span></div>
+      <div class="posrow"><span class="tk">TWT</span><div class="wbar"><i style="width:14%"></i></div><span class="wv">2.9%</span><span class="chg up">+0.6%</span></div>
+      <div class="posrow"><span class="tk">ALICE</span><div class="wbar"><i style="width:5%"></i></div><span class="wv">1.0%</span><span class="chg up">+0.9%</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Signal <span class="muted" style="font-weight:400">· funding-shadow ⊕ momentum</span></h3>
+      <div class="posrow"><span class="tk">INJ</span><div class="wbar"><i style="width:92%"></i></div><span class="wv">+1.84</span></div>
+      <div class="posrow"><span class="tk">BNB</span><div class="wbar"><i style="width:76%"></i></div><span class="wv">+1.52</span></div>
+      <div class="posrow"><span class="tk">AAVE</span><div class="wbar"><i style="width:60%"></i></div><span class="wv">+1.19</span></div>
+      <div class="posrow"><span class="tk">LINK</span><div class="wbar"><i style="width:37%"></i></div><span class="wv">+0.74</span></div>
+      <div class="posrow"><span class="tk muted">DOT</span><div class="wbar"><i style="width:0%"></i></div><span class="wv dn">-0.66</span></div>
+      <h3 style="margin-top:18px">Decision Log <span class="muted" style="font-weight:400">· journal ⛓ valid</span></h3>
+      <div class="log">
+        <div class="e"><span class="dot g"></span><span class="tm">14:00</span><span>BTC above 150h MA → <b>Risk-On</b>; sized 8 names at 76% gross</span></div>
+        <div class="e"><span class="dot"></span><span class="tm">14:00</span><span class="muted">x402 paid $0.27 for funding · F&amp;G · price</span></div>
+        <div class="e"><span class="dot a"></span><span class="tm">13:00</span><span>Breaker swept dd 1.2% — well inside 15%</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

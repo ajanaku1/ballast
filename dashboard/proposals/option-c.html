@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ballast — Ops (Option C)</title>
+<style>
+  :root{
+    --bg:#0c0d10; --tile:#15171c; --tile2:#1b1e25; --line:#262a33;
+    --txt:#e6e9ef; --dim:#878e9c; --grn:#3ddc84; --red:#ff5b6e; --amb:#ffc24b;
+    --blu:#5aa9ff; --vio:#b18cff;
+    --f:'Inter',-apple-system,Segoe UI,sans-serif; --m:ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--f);font-size:13px}
+  .bar{display:flex;align-items:center;gap:14px;padding:11px 18px;background:var(--tile);border-bottom:1px solid var(--line)}
+  .b{font-weight:800;letter-spacing:.2em;font-size:13px}
+  .b span{color:var(--grn)}
+  .stat{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--dim)}
+  .led{width:8px;height:8px;border-radius:50%;background:var(--grn);box-shadow:0 0 8px var(--grn)}
+  .led.a{background:var(--amb);box-shadow:0 0 8px var(--amb)}
+  .right{margin-left:auto;font-family:var(--m);color:var(--dim);font-size:12px}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:14px 18px}
+  .tile{background:var(--tile);border:1px solid var(--line);border-radius:10px;padding:14px}
+  .tile .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--dim)}
+  .tile .v{font-size:24px;font-weight:700;margin-top:6px}
+  .tile .s{font-size:11.5px;color:var(--dim);margin-top:4px}
+  .span2{grid-column:span 2}
+  .span4{grid-column:span 4}
+  .pos{color:var(--grn)} .neg{color:var(--red)}
+  .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .head h3{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin:0}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  td,th{padding:6px 4px;text-align:right}
+  th{color:var(--dim);font-weight:500;font-size:10.5px;text-transform:uppercase;border-bottom:1px solid var(--line)}
+  td:first-child,th:first-child{text-align:left}
+  td{border-bottom:1px solid #1d2028}
+  .sym{font-weight:600}
+  .mini{height:4px;background:#23272f;border-radius:3px;overflow:hidden}
+  .mini i{display:block;height:100%;background:var(--blu)}
+  svg{display:block;width:100%;height:90px}
+  .heat{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;margin-top:6px}
+  .heat span{height:18px;border-radius:3px;background:#23272f}
+  .z1{background:#16623a}.z2{background:#1f8a4f}.z3{background:#3ddc84}.zn{background:#7a2630}.zn2{background:#c2384a}
+  .gaugewrap{display:flex;align-items:center;gap:14px}
+  .ring{--p:28;width:70px;height:70px;border-radius:50%;background:conic-gradient(var(--amb) calc(var(--p)*3.6deg),#23272f 0);display:grid;place-items:center}
+  .ring i{width:54px;height:54px;border-radius:50%;background:var(--tile);display:grid;place-items:center;font-weight:700;font-size:18px}
+  .log{font-family:var(--m);font-size:11.5px;max-height:150px;overflow:hidden}
+  .log div{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #1d2028}
+  .log .t{color:var(--dim)} .log .g{color:var(--grn)} .log .a{color:var(--amb)} .log .b{color:var(--blu)}
+</style>
+</head>
+<body>
+  <div class="bar">
+    <div class="b">BALLAST<span>//</span>OPS</div>
+    <div class="stat"><span class="led"></span>LOOP</div>
+    <div class="stat"><span class="led"></span>BREAKER</div>
+    <div class="stat"><span class="led"></span>x402</div>
+    <div class="stat"><span class="led a"></span>GREENFIELD</div>
+    <div class="right">0x7Fda…3a40 · tick #142 · CONSERVATIVE · PAPER</div>
+  </div>
+
+  <div class="grid">
+    <div class="tile"><div class="k">Equity</div><div class="v">$10,842</div><div class="s pos">+8.42% all-time</div></div>
+    <div class="tile"><div class="k">Open Drawdown</div><div class="v">1.2%</div><div class="s">peak 8.9% · kill 15%</div></div>
+    <div class="tile"><div class="k">Gross Exposure</div><div class="v">76%</div><div class="s">band 40–90%</div></div>
+    <div class="tile"><div class="k">Regime</div><div class="v pos" style="font-size:20px">RISK-ON</div><div class="s">BTC 64.2k &gt; MA 58.9k</div></div>
+
+    <div class="tile span2">
+      <div class="head"><h3>Equity · 142 ticks</h3><span class="pos" style="font-size:12px">+8.42%</span></div>
+      <svg viewBox="0 0 300 90" preserveAspectRatio="none">
+        <polyline fill="none" stroke="#3ddc84" stroke-width="1.6"
+          points="0,74 22,70 44,76 66,60 88,64 110,50 132,72 154,46 176,50 198,34 220,40 242,26 264,32 300,14"/>
+      </svg>
+      <div class="heat">
+        <span class="z2"></span><span class="z3"></span><span class="z1"></span><span class="z3"></span><span class="z2"></span><span class="zn"></span><span class="z2"></span><span class="z3"></span><span class="z3"></span><span class="z1"></span>
+        <span class="z3"></span><span class="z2"></span><span class="z3"></span><span class="zn2"></span><span class="z2"></span><span class="z3"></span><span class="z1"></span><span class="z3"></span><span class="z2"></span><span class="z3"></span>
+      </div>
+      <div class="s" style="color:var(--dim);margin-top:6px">daily P&amp;L heat · green = up, red = down</div>
+    </div>
+
+    <div class="tile span2">
+      <div class="head"><h3>Positions · 8 / 149</h3><span class="s" style="color:var(--dim)">cash 24%</span></div>
+      <table>
+        <thead><tr><th>Tok</th><th>Wt</th><th></th><th>24h</th><th>Val</th></tr></thead>
+        <tbody>
+          <tr><td class="sym">BNB</td><td>20.0%</td><td style="width:70px"><div class="mini"><i style="width:100%"></i></div></td><td class="pos">+2.1%</td><td>$2,168</td></tr>
+          <tr><td class="sym">INJ</td><td>15.4%</td><td><div class="mini"><i style="width:77%"></i></div></td><td class="pos">+4.6%</td><td>$1,670</td></tr>
+          <tr><td class="sym">CAKE</td><td>12.8%</td><td><div class="mini"><i style="width:64%"></i></div></td><td class="neg">-0.8%</td><td>$1,388</td></tr>
+          <tr><td class="sym">LINK</td><td>11.1%</td><td><div class="mini"><i style="width:55%"></i></div></td><td class="pos">+1.4%</td><td>$1,203</td></tr>
+          <tr><td class="sym">AAVE</td><td>9.7%</td><td><div class="mini"><i style="width:48%"></i></div></td><td class="pos">+3.2%</td><td>$1,051</td></tr>
+          <tr><td class="sym">XVS</td><td>3.1%</td><td><div class="mini"><i style="width:15%"></i></div></td><td class="neg">-1.1%</td><td>$336</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tile span2">
+      <div class="head"><h3>Signal Rank · funding ⊕ momentum</h3><span class="s" style="color:var(--dim)">z-score</span></div>
+      <table>
+        <tbody>
+          <tr><td class="sym">INJ</td><td style="width:55%"><div class="mini"><i style="width:92%"></i></div></td><td class="pos">+1.84</td></tr>
+          <tr><td class="sym">BNB</td><td><div class="mini"><i style="width:76%"></i></div></td><td class="pos">+1.52</td></tr>
+          <tr><td class="sym">AAVE</td><td><div class="mini"><i style="width:60%"></i></div></td><td class="pos">+1.19</td></tr>
+          <tr><td class="sym">LINK</td><td><div class="mini"><i style="width:37%"></i></div></td><td class="pos">+0.74</td></tr>
+          <tr><td class="sym" style="color:var(--dim)">DOT</td><td><div class="mini"><i style="width:10%;background:var(--red)"></i></div></td><td class="neg">-0.66</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tile">
+      <div class="head"><h3>F&amp;G Throttle</h3></div>
+      <div class="gaugewrap"><div class="ring" style="--p:28"><i>28</i></div>
+        <div class="s" style="color:var(--dim)">Fear<br><b style="color:var(--txt)">gross 76%</b></div></div>
+    </div>
+
+    <div class="tile">
+      <div class="head"><h3>x402 Meter</h3></div>
+      <div class="v" style="font-size:20px">$0.27<span class="s" style="color:var(--dim)"> / $5 cap</span></div>
+      <div class="mini" style="margin-top:8px"><i style="width:5.4%;background:var(--vio)"></i></div>
+      <div class="s" style="color:var(--dim);margin-top:6px">27 paid queries this tick</div>
+    </div>
+
+    <div class="tile span4">
+      <div class="head"><h3>Decision Log</h3><span class="s" style="color:var(--dim)">journal ⛓ valid · gnfd://ballast-journal</span></div>
+      <div class="log">
+        <div><span class="t">14:00:02</span><span class="b">PERCEIVE</span><span>x402 paid $0.27 → 20 tokens · F&amp;G 28 · BTC 64,210</span></div>
+        <div><span class="t">14:00:03</span><span class="g">REGIME</span><span>BTC &gt; 150h MA → RISK-ON</span></div>
+        <div><span class="t">14:00:03</span><span class="b">SIGNAL</span><span>top INJ +1.84 · BNB +1.52 · AAVE +1.19 → basket 8</span></div>
+        <div><span class="t">14:00:04</span><span class="b">SIZE</span><span>F&amp;G 28 → gross 76% · inverse-vol · cap 20%</span></div>
+        <div><span class="t">14:00:06</span><span class="g">EXEC</span><span>USDT→INJ $612 0x4af9…21bc ✓ · USDT→BNB $430 0x9c12…77de ✓</span></div>
+        <div><span class="t">13:00:05</span><span class="a">BREAKER</span><span>dd 1.2% &lt; 15% — clear</span></div>
+        <div><span class="t">13:00:02</span><span class="b">RECORD</span><span>tick #141 → Greenfield ✓ hash 68cc…9375</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

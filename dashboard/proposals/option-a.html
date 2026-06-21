@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ballast — Terminal (Option A)</title>
+<style>
+  :root{
+    --bg:#0a0e12; --panel:#0f151b; --panel2:#121a22; --line:#1d2832;
+    --txt:#cdd9e3; --dim:#6b7d8c; --grn:#2ee6a6; --red:#ff5d6c; --amb:#ffb13d;
+    --acc:#39b6ff; --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--mono);font-size:12.5px;line-height:1.45}
+  .top{display:flex;align-items:center;gap:18px;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--panel)}
+  .brand{font-weight:700;letter-spacing:.16em;color:#fff}
+  .brand b{color:var(--grn)}
+  .tag{color:var(--dim);font-size:11px;border:1px solid var(--line);padding:2px 7px;border-radius:3px}
+  .tag.on{color:var(--grn);border-color:#1c4a3c}
+  .spacer{flex:1}
+  .addr{color:var(--acc)}
+  .grid{display:grid;grid-template-columns:1.5fr 1fr;gap:1px;background:var(--line)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+  section{background:var(--panel)}
+  .hd{display:flex;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--line);color:var(--dim);text-transform:uppercase;letter-spacing:.14em;font-size:10.5px}
+  .pad{padding:12px 14px}
+  table{width:100%;border-collapse:collapse}
+  th{text-align:right;color:var(--dim);font-weight:500;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;padding:6px 14px;border-bottom:1px solid var(--line)}
+  th:first-child,td:first-child{text-align:left}
+  td{padding:7px 14px;border-bottom:1px solid #131c24}
+  tr:hover td{background:var(--panel2)}
+  .sym{color:#fff;font-weight:600}
+  .pos{color:var(--grn)} .neg{color:var(--red)}
+  .bar{height:5px;background:#16212b;border-radius:3px;overflow:hidden;min-width:60px}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,#1c6,#2ee6a6)}
+  .kpis{display:flex;gap:0;border-bottom:1px solid var(--line)}
+  .kpi{flex:1;padding:12px 14px;border-right:1px solid var(--line)}
+  .kpi:last-child{border-right:0}
+  .kpi .l{color:var(--dim);font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+  .kpi .v{font-size:20px;color:#fff;margin-top:3px}
+  .sig{display:flex;align-items:center;gap:10px;padding:6px 0}
+  .sig .n{width:62px;color:#fff}
+  .sig .track{flex:1;height:8px;background:#16212b;border-radius:4px;position:relative}
+  .sig .track i{position:absolute;top:0;bottom:0;left:50%;background:var(--acc);opacity:.85}
+  .sig .track i.b{background:var(--grn)}
+  .sig .z{width:46px;text-align:right;color:var(--dim)}
+  .log div{display:flex;gap:10px;padding:5px 14px;border-bottom:1px solid #131c24;font-size:11.5px}
+  .log .t{color:var(--dim);white-space:nowrap}
+  .log .m{color:var(--txt)}
+  .log .ok{color:var(--grn)} .log .warn{color:var(--amb)}
+  svg{display:block;width:100%;height:150px}
+  .gauge{display:flex;align-items:center;gap:12px}
+  .ring{--p:28;width:64px;height:64px;border-radius:50%;background:conic-gradient(var(--red) calc(var(--p)*1%),#16212b 0);display:grid;place-items:center}
+  .ring i{width:50px;height:50px;border-radius:50%;background:var(--panel);display:grid;place-items:center;color:#fff;font-size:16px}
+</style>
+</head>
+<body>
+  <div class="top">
+    <span class="brand">BALLAST<b>·</b>TERMINAL</span>
+    <span class="tag on">● LIVE PAPER</span>
+    <span class="tag">CONSERVATIVE</span>
+    <span class="tag on">REGIME: RISK-ON</span>
+    <span class="tag">BREAKER 15%</span>
+    <span class="spacer"></span>
+    <span class="addr">agent 0x7Fda…3a40</span>
+    <span class="tag">tick #142 · 14:00 UTC</span>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="l">Equity</div><div class="v">$10,842.10</div></div>
+    <div class="kpi"><div class="l">Total Return</div><div class="v pos">+8.42%</div></div>
+    <div class="kpi"><div class="l">Max Drawdown</div><div class="v">8.9%</div></div>
+    <div class="kpi"><div class="l">Gross Exposure</div><div class="v">76%</div></div>
+    <div class="kpi"><div class="l">Open Drawdown</div><div class="v">1.2%</div></div>
+    <div class="kpi"><div class="l">x402 Spend / tick</div><div class="v">$0.27</div></div>
+  </div>
+
+  <div class="grid">
+    <section>
+      <div class="hd"><span>Positions · 8 of 149 universe</span><span>weight / 24h / value</span></div>
+      <table>
+        <thead><tr><th>Token</th><th>Weight</th><th>Alloc</th><th>24h</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td class="sym">BNB</td><td>20.0%</td><td><div class="bar"><i style="width:100%"></i></div></td><td class="pos">+2.1%</td><td>$2,168</td></tr>
+          <tr><td class="sym">INJ</td><td>15.4%</td><td><div class="bar"><i style="width:77%"></i></div></td><td class="pos">+4.6%</td><td>$1,670</td></tr>
+          <tr><td class="sym">CAKE</td><td>12.8%</td><td><div class="bar"><i style="width:64%"></i></div></td><td class="neg">-0.8%</td><td>$1,388</td></tr>
+          <tr><td class="sym">LINK</td><td>11.1%</td><td><div class="bar"><i style="width:55%"></i></div></td><td class="pos">+1.4%</td><td>$1,203</td></tr>
+          <tr><td class="sym">AAVE</td><td>9.7%</td><td><div class="bar"><i style="width:48%"></i></div></td><td class="pos">+3.2%</td><td>$1,051</td></tr>
+          <tr><td class="sym">XVS</td><td>3.1%</td><td><div class="bar"><i style="width:15%"></i></div></td><td class="neg">-1.1%</td><td>$336</td></tr>
+          <tr><td class="sym">TWT</td><td>2.9%</td><td><div class="bar"><i style="width:14%"></i></div></td><td class="pos">+0.6%</td><td>$314</td></tr>
+          <tr><td class="sym">ALICE</td><td>1.0%</td><td><div class="bar"><i style="width:5%"></i></div></td><td class="pos">+0.9%</td><td>$108</td></tr>
+          <tr><td class="sym" style="color:var(--dim)">USDT</td><td>24.0%</td><td><div class="bar"><i style="width:100%;background:#2b3a47"></i></div></td><td>—</td><td>$2,602</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <div class="hd"><span>P&amp;L · 142 ticks</span><span>+8.42%</span></div>
+      <div class="pad">
+        <svg viewBox="0 0 320 150" preserveAspectRatio="none">
+          <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2ee6a6" stop-opacity=".35"/><stop offset="1" stop-color="#2ee6a6" stop-opacity="0"/></linearGradient></defs>
+          <polyline fill="none" stroke="#2ee6a6" stroke-width="1.8"
+            points="0,120 24,116 48,122 72,104 96,108 120,92 144,118 168,86 192,90 216,70 240,76 264,58 288,64 320,40"/>
+          <polygon fill="url(#g)" points="0,120 24,116 48,122 72,104 96,108 120,92 144,118 168,86 192,90 216,70 240,76 264,58 288,64 320,40 320,150 0,150"/>
+        </svg>
+      </div>
+      <div class="hd"><span>Fear &amp; Greed → Throttle</span><span>contrarian</span></div>
+      <div class="pad gauge">
+        <div class="ring" style="--p:28"><i>28</i></div>
+        <div><div style="color:#fff">Fear · 28</div><div style="color:var(--dim);margin-top:3px">drives gross to <b style="color:var(--grn)">76%</b><br>greed would cut toward 40%</div></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="row2">
+    <section>
+      <div class="hd"><span>Signal · funding-shadow ⊕ momentum</span><span>z-score</span></div>
+      <div class="pad">
+        <div class="sig"><span class="n">INJ</span><span class="track"><i class="b" style="left:50%;width:34%"></i></span><span class="z">+1.84</span></div>
+        <div class="sig"><span class="n">BNB</span><span class="track"><i class="b" style="left:50%;width:28%"></i></span><span class="z">+1.52</span></div>
+        <div class="sig"><span class="n">AAVE</span><span class="track"><i class="b" style="left:50%;width:22%"></i></span><span class="z">+1.19</span></div>
+        <div class="sig"><span class="n">LINK</span><span class="track"><i class="b" style="left:50%;width:14%"></i></span><span class="z">+0.74</span></div>
+        <div class="sig"><span class="n">CAKE</span><span class="track"><i class="b" style="left:50%;width:8%"></i></span><span class="z">+0.41</span></div>
+        <div class="sig"><span class="n">DOT</span><span class="track"><i style="left:38%;width:12%"></i></span><span class="z">-0.66</span></div>
+        <div class="sig"><span class="n">ADA</span><span class="track"><i style="left:30%;width:20%"></i></span><span class="z">-1.05</span></div>
+      </div>
+    </section>
+    <section>
+      <div class="hd"><span>Decision Log</span><span>journal ⛓ valid</span></div>
+      <div class="log">
+        <div><span class="t">14:00:02</span><span class="m">perceive · x402 paid $0.27 → 20 tokens, F&amp;G 28</span></div>
+        <div><span class="t">14:00:03</span><span class="m">regime BTC 64,210 &gt; 150h MA 58,940 → <span class="ok">RISK-ON</span></span></div>
+        <div><span class="t">14:00:03</span><span class="m">signal top: INJ +1.84, BNB +1.52, AAVE +1.19</span></div>
+        <div><span class="t">14:00:04</span><span class="m">throttle F&amp;G 28 → gross 76% · inverse-vol sized 8</span></div>
+        <div><span class="t">14:00:06</span><span class="m ok">swap USDT→INJ $612 · 0x4af9…21bc ✓</span></div>
+        <div><span class="t">14:00:08</span><span class="m ok">swap USDT→BNB $430 · 0x9c12…77de ✓</span></div>
+        <div><span class="t">13:00:05</span><span class="m warn">breaker check dd 1.2% &lt; 15% — clear</span></div>
+        <div><span class="t">13:00:02</span><span class="m">record → Greenfield gnfd://ballast-journal/142 ✓</span></div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
