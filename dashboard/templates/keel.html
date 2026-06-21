@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="refresh" content="30">
 <title>Ballast — Keel</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
 <style>
   :root{
     --bg:#f3f6f7; --ink:#0d2630; --sea:#0e6b7a; --sea2:#1394a6; --mist:#5b7682;
@@ -17,6 +18,7 @@
   .wrap{max-width:1060px;margin:0 auto;padding:30px 26px 48px}
   header{display:flex;align-items:flex-end;gap:16px;margin-bottom:26px}
   .logo{display:flex;align-items:center;gap:11px}
+  .markimg{width:38px;height:38px;border-radius:9px;object-fit:cover;display:block}
   .mark{width:30px;height:30px;border-radius:50%;border:2.5px solid var(--sea);position:relative}
   .mark:after{content:"";position:absolute;left:50%;top:3px;width:2.5px;height:13px;background:var(--sea);transform:translateX(-50%)}
   .mark:before{content:"";position:absolute;left:50%;bottom:4px;width:13px;height:13px;border:2.5px solid var(--sea);border-top:0;border-radius:0 0 13px 13px;transform:translateX(-50%)}
@@ -62,7 +64,7 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="logo"><div class="mark"></div>
+    <div class="logo"><img src="/logo.png" class="markimg" alt="Ballast logo"/>
       <div><h1>Ballast</h1><div class="sub">self-custody spot agent · keeping the ship upright</div></div></div>
     <div class="pill">
       <span class="live">● {{ v.mode|capitalize }}</span>

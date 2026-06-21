@@ -16,7 +16,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, send_file
 
 from ballast.config import Config
 from ballast.journal import Journal
@@ -27,6 +27,16 @@ app = Flask(__name__, template_folder=str(Path(__file__).parent / "templates"))
 
 def _journal_path() -> Path:
     return ROOT / "journal.jsonl"
+
+
+@app.route("/logo.png")
+def logo():
+    return send_file(ROOT / "docs" / "images" / "logo.png")
+
+
+@app.route("/favicon.png")
+def favicon():
+    return send_file(ROOT / "docs" / "images" / "favicon.png")
 
 
 def load_view(preset: str = "conservative") -> dict:
