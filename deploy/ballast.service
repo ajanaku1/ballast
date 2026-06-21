@@ -1,0 +1,11 @@
+[Unit]
+Description=Ballast — one autonomous trading tick
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/root/ballast
+ExecStart=/root/ballast/deploy/run_tick.sh
+StandardOutput=append:/root/ballast/ballast-agent.log
+StandardError=append:/root/ballast/ballast-agent.log
